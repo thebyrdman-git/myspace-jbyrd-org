@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raven - MySpace</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        /* Raven's goth aesthetic - pure black with purple accents */
+        body {
+            background: #000 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect fill="%23000" width="100" height="100"/><circle cx="50" cy="50" r="40" fill="none" stroke="%23660099" stroke-width="0.5" opacity="0.3"/><circle cx="50" cy="50" r="25" fill="none" stroke="%23990099" stroke-width="0.5" opacity="0.2"/></svg>') repeat;
+            background-attachment: fixed;
+        }
+        .container {
+            background: rgba(10, 0, 10, 0.95);
+        }
+        .profile-box, .interests-box, .friends-box, .main-content {
+            background: #0a000a;
+            color: #ccc;
+        }
+        .section-header, .orange-header {
+            color: #9900cc !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="header">
+            <a href="https://jbyrd.org" target="_blank">
+                <img src="/images/myspace-logo.png" alt="MySpace" class="logo">
+            </a>
+        </div>
+        
+        <div class="container">
+            <div class="left-column">
+                <div class="profile-box">
+                    <h2 class="section-header">Raven</h2>
+                    <div class="profile-pic">
+                        <img src="/images/profiles/raven.png" alt="Raven" style="width: 200px; height: 200px; object-fit: cover;">
+                    </div>
+                    <div class="profile-info">
+                        <p><strong>"Darkness is my only friend"</strong></p>
+                        <p>🦇 The Goth</p>
+                        <p>Somewhere in the Shadows</p>
+                    </div>
+                    <div class="mood" style="background: #000; color: #9900cc; border: 2px solid #660099;">
+                        <strong>Mood:</strong> <span class="mood-text">eternally melancholic 🦇</span>
+                    </div>
+                </div>
+
+                <div class="interests-box">
+                    <h3 class="section-header orange">Raven's Interests</h3>
+                    <div class="interests">
+                        <p><strong>General:</strong></p>
+                        <p>Black clothing, silver jewelry, vampires, Edgar Allan Poe, candles, Victorian era, tarot cards, cemeteries</p>
+                        <p><strong>Music:</strong></p>
+                        <p>Nine Inch Nails, The Cure, Bauhaus, Type O Negative, Sisters of Mercy, Cradle of Filth</p>
+                        <p><strong>Movies:</strong></p>
+                        <p>The Crow, Interview with the Vampire, Edward Scissorhands, The Nightmare Before Christmas, Dracula</p>
+                        <p><strong>Books:</strong></p>
+                        <p>Anything by Anne Rice, Edgar Allan Poe, Gothic horror, vampire novels</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="main-content">
+                    <h2 class="section-header blue">Raven's Profile</h2>
+                    
+                    <div class="about-me">
+                        <h3 class="orange-header">About Raven:</h3>
+                        <p style="color: #9900cc; font-style: italic;">*lights black candle and adjusts pentagram necklace*</p>
+                        <p>I am Raven. I walk in darkness and find beauty in what others fear. My wardrobe consists exclusively of black - black lace, black velvet, black leather. Silver jewelry adorns my pale skin, and my eyes are lined with kohl as dark as midnight.</p>
+                        <p>I spend my nights reading Poe by candlelight and listening to The Cure. I collect Victorian mourning jewelry and spend weekends exploring old cemeteries. People don't understand me, and that's fine. I don't exist for their approval.</p>
+                        <p><em>"We are the children of the night. What beautiful music we make." - Raven's LiveJournal, 2003</em></p>
+                    </div>
+
+                    <div class="music-player-box">
+                        <div class="retro-player">
+                            <div class="player-display">
+                                <div class="track-info">
+                                    <div class="track-title" id="track-title"></div>
+                                    <div class="track-artist" id="track-artist"></div>
+                                </div>
+                                <div class="visualizer">
+                                    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                                </div>
+                            </div>
+                            <div class="player-controls">
+                                <button class="ctrl-btn" onclick="prevTrack()">⏮</button>
+                                <button class="ctrl-btn play-btn" onclick="togglePlay()">▶</button>
+                                <button class="ctrl-btn" onclick="nextTrack()">⏭</button>
+                                <button class="ctrl-btn" onclick="toggleShuffle()">🔀</button>
+                            </div>
+                        </div>
+                        <div class="playlist-box">
+                            <div class="playlist-scroll" id="playlist"></div>
+                        </div>
+                        <audio id="audioPlayer" style="display: none;" preload="none"></audio>
+                    </div>
+
+                    <div class="friends-box">
+                        <h3 class="orange-header">Raven's Friends</h3>
+                        <p class="subtitle">Raven has <strong>8</strong> friends</p>
+                        <div class="friends-grid">
+                            <div class="friend-item">
+                                <a href="/">
+                                    <img src="/images/profile.jpeg" alt="jbyrd" width="150" height="150" style="object-fit: cover;">
+                                </a>
+                                <span class="friend-name">jbyrd</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="/profiles/tom.html">
+                                    <img src="/images/profiles/thumb_tom_anderson.png" alt="Tom" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Tom</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="/profiles/jesse.html">
+                                    <img src="/images/profiles/thumb_jesse.png" alt="Jesse" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Jesse</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="/profiles/michelle.html">
+                                    <img src="/images/profiles/thumb_michelle.png" alt="Michelle" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Michelle</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="/profiles/brandon.html">
+                                    <img src="/images/profiles/thumb_brandon.png" alt="Brandon" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Brandon</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="/profiles/ashley.html">
+                                    <img src="/images/profiles/thumb_ashley.png" alt="Ashley" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Ashley</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="/profiles/tyler.html">
+                                    <img src="/images/profiles/thumb_tyler.png" alt="Tyler" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Tyler</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="/profiles/brittany.html">
+                                    <img src="/images/profiles/thumb_brittany.png" alt="Brittany" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Brittany</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 jbyrd.org | <a href="/" style="color: #fff;">← Back to jbyrd's profile</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Simple MP3 Player
+        let isPlaying = false;
+        
+        // Track list with local MP3 files
+        const tracks = [
+            { title: "Yeah! ft. Lil Jon, Ludacris", artist: "Usher", url: "/audio/01 - Usher - Yeah! (Official Video) ft. Lil Jon, Ludacris.mp3" },
+            { title: "Uptown Funk ft. Bruno Mars", artist: "Mark Ronson", url: "/audio/02 - Mark Ronson - Uptown Funk (Official Video) ft. Bruno Mars.mp3" },
+            { title: "Hotline Bling", artist: "Drake", url: "/audio/03 - Drake - Hotline Bling.mp3" },
+            { title: "Shape of You", artist: "Ed Sheeran", url: "/audio/04 - Ed Sheeran - Shape of You (Official Video).mp3" },
+            { title: "Blinding Lights", artist: "The Weeknd", url: "/audio/05 - The Weeknd - Blinding Lights (Official Video).mp3" },
+            { title: "Levitating ft. DaBaby", artist: "Dua Lipa", url: "/audio/06 - Dua Lipa - Levitating Featuring DaBaby (Official Music Video).mp3" },
+            { title: "Somebody That I Used to Know ft. Kimbra", artist: "Gotye", url: "/audio/07 - Gotye - Somebody That I Used to Know (feat. Kimbra) - official video.mp3" },
+            { title: "Mr. Brightside", artist: "The Killers", url: "/audio/08 - The Killers - Mr. Brightside (Official Music Video).mp3" },
+            { title: "Hips Don't Lie ft. Wyclef Jean", artist: "Shakira", url: "/audio/09 - Shakira - Hips Don't Lie (Official 4K Video) ft. Wyclef Jean.mp3" },
+            { title: "Single Ladies (Put a Ring on It)", artist: "Beyoncé", url: "/audio/10 - Beyoncé - Single Ladies (Put a Ring on It) (Video Version).mp3" },
+            { title: "In Da Club", artist: "50 Cent", url: "/audio/11 - 50 Cent - In Da Club (Official Music Video).mp3" },
+            { title: "Crazy in Love ft. Jay-Z", artist: "Beyoncé", url: "/audio/12 - Beyoncé - Crazy In Love ft. JAY-Z.mp3" },
+            { title: "Low ft. T-Pain", artist: "Flo Rida", url: "/audio/13 - Flo Rida - Low ft. T-Pain [Official Music Video].mp3" },
+            { title: "Poker Face", artist: "Lady Gaga", url: "/audio/14 - Lady Gaga - Poker Face (Official Music Video).mp3" },
+            { title: "Don't Stop Believin'", artist: "Journey", url: "/audio/15 - Journey - Don't Stop Believin' (Official Audio).mp3" },
+            { title: "Wake Me Up When September Ends", artist: "Green Day", url: "/audio/16 - Green Day - Wake Me Up When September Ends [Official Music Video] [4K UPGRADE].mp3" },
+            { title: "Viva La Vida", artist: "Coldplay", url: "/audio/17 - Coldplay - Viva La Vida (Official Video).mp3" },
+            { title: "Clocks", artist: "Coldplay", url: "/audio/18 - Coldplay - Clocks (Official Video).mp3" },
+            { title: "Grenade", artist: "Bruno Mars", url: "/audio/19 - Bruno Mars - Grenade (Official Music Video).mp3" },
+            { title: "Just the Way You Are", artist: "Bruno Mars", url: "/audio/20 - Bruno Mars - Just The Way You Are (Official Music Video).mp3" },
+            { title: "SexyBack ft. Timbaland", artist: "Justin Timberlake", url: "/audio/21 - Justin Timberlake - SexyBack (Official Video) ft. Timbaland.mp3" },
+            { title: "Since U Been Gone", artist: "Kelly Clarkson", url: "/audio/22 - Kelly Clarkson - Since U Been Gone (VIDEO).mp3" },
+            { title: "Hollaback Girl", artist: "Gwen Stefani", url: "/audio/23 - Gwen Stefani - Hollaback Girl (Official Music Video).mp3" },
+            { title: "Umbrella ft. Jay-Z", artist: "Rihanna", url: "/audio/24 - Rihanna - Umbrella (Orange Version) (Official Music Video) ft. JAY-Z.mp3" },
+            { title: "Gold Digger ft. Jamie Foxx", artist: "Kanye West", url: "/audio/25 - Kanye West - Gold Digger ft. Jamie Foxx.mp3" },
+            { title: "Stronger", artist: "Kanye West", url: "/audio/26 - Kanye West - Stronger.mp3" },
+            { title: "Party Rock Anthem ft. Lauren Bennett, GoonRock", artist: "LMFAO", url: "/audio/27 - LMFAO - Party Rock Anthem ft. Lauren Bennett, GoonRock.mp3" },
+            { title: "I Gotta Feeling", artist: "The Black Eyed Peas", url: "/audio/28 - The Black Eyed Peas - I Gotta Feeling (Official Music Video).mp3" },
+            { title: "Get Lucky ft. Pharrell Williams, Nile Rodgers", artist: "Daft Punk", url: "/audio/29 - Daft Punk - Get Lucky (Official Audio) ft. Pharrell Williams, Nile Rodgers.mp3" },
+            { title: "Happy", artist: "Pharrell Williams", url: "/audio/30 - Pharrell Williams - Happy (Official Music Video).mp3" },
+            { title: "Ho Hey", artist: "The Lumineers", url: "/audio/31 - The Lumineers - Ho Hey (Official Video).mp3" },
+            { title: "Fireflies", artist: "Owl City", url: "/audio/32 - Owl City - Fireflies (Official Music Video).mp3" },
+            { title: "Moves Like Jagger ft. Christina Aguilera", artist: "Maroon 5", url: "/audio/33 - Maroon 5 - Moves Like Jagger ft. Christina Aguilera (Official Music Video).mp3" },
+            { title: "Counting Stars", artist: "OneRepublic", url: "/audio/34 - OneRepublic - Counting Stars (Official Music Video).mp3" },
+            { title: "Apologize ft. OneRepublic", artist: "Timbaland", url: "/audio/35 - Timbaland - Apologize ft. OneRepublic.mp3" },
+            { title: "Hey Ya!", artist: "OutKast", url: "/audio/36 - OutKast - Hey Ya! (Official HD Video).mp3" },
+            { title: "Ms. Jackson", artist: "OutKast", url: "/audio/37 - OutKast - Ms. Jackson (Official HD Video).mp3" },
+            { title: "Boulevard of Broken Dreams", artist: "Green Day", url: "/audio/38 - Green Day - Boulevard Of Broken Dreams [Official Music Video] [4K UPGRADE].mp3" },
+            { title: "American Idiot", artist: "Green Day", url: "/audio/39 - Green Day - American Idiot [Official Music Video] [4K UPGRADE].mp3" },
+            { title: "Seven Nation Army", artist: "The White Stripes", url: "/audio/40 - The White Stripes - 'Seven Nation Army' [Official Music Video].mp3" },
+            { title: "Last Resort", artist: "Papa Roach", url: "/audio/41 - Papa Roach - Last Resort (Official Video).mp3" },
+            { title: "Numb", artist: "Linkin Park", url: "/audio/42 - Linkin Park - Numb (Official Music Video) [4K UPGRADE].mp3" },
+            { title: "In The End", artist: "Linkin Park", url: "/audio/43 - Linkin Park - In The End (Official Music Video) [4K UPGRADE].mp3" },
+            { title: "Bring Me to Life ft. Paul McCoy", artist: "Evanescence", url: "/audio/44 - Evanescence - Bring Me To Life (Official HD Music Video).mp3" },
+            { title: "My Immortal", artist: "Evanescence", url: "/audio/45 - Evanescence - My Immortal (Official Music Video).mp3" },
+            { title: "Complicated", artist: "Avril Lavigne", url: "/audio/46 - Avril Lavigne - Complicated (Official Video).mp3" },
+            { title: "Sk8er Boi", artist: "Avril Lavigne", url: "/audio/47 - Avril Lavigne - Sk8er Boi (Official Video).mp3" },
+            { title: "I'm Not Okay (I Promise)", artist: "My Chemical Romance", url: "/audio/48 - My Chemical Romance - I'm Not Okay (I Promise) [Official Music Video] [HD].mp3" },
+            { title: "Welcome to the Black Parade", artist: "My Chemical Romance", url: "/audio/49 - My Chemical Romance - Welcome to the Black Parade [Official Music Video] [HD].mp3" },
+            { title: "Sugar, We're Goin Down", artist: "Fall Out Boy", url: "/audio/50 - Fall Out Boy - Sugar, We're Goin Down (Official Music Video).mp3" },
+            { title: "Thnks fr th Mmrs", artist: "Fall Out Boy", url: "/audio/51 - Fall Out Boy - Thnks fr th Mmrs (Official Music Video).mp3" },
+            { title: "The Middle", artist: "Jimmy Eat World", url: "/audio/52 - Jimmy Eat World - The Middle (Official Music Video).mp3" },
+            { title: "Ocean Avenue", artist: "Yellowcard", url: "/audio/53 - Yellowcard - Ocean Avenue (Official Video).mp3" },
+            { title: "Fat Lip", artist: "Sum 41", url: "/audio/54 - Sum 41 - Fat Lip (Official Music Video).mp3" },
+            { title: "In Too Deep", artist: "Sum 41", url: "/audio/55 - Sum 41 - In Too Deep (Official Music Video).mp3" },
+            { title: "The Anthem", artist: "Good Charlotte", url: "/audio/56 - Good Charlotte - The Anthem (Official Video).mp3" },
+            { title: "Lifestyles of the Rich & Famous", artist: "Good Charlotte", url: "/audio/57 - Good Charlotte - Lifestyles Of The Rich & Famous (Official Video).mp3" },
+            { title: "All the Small Things", artist: "blink-182", url: "/audio/58 - blink-182 - All The Small Things (Official Video).mp3" },
+            { title: "What's My Age Again?", artist: "blink-182", url: "/audio/59 - blink-182 - What's My Age Again? (Official Video).mp3" },
+            { title: "The Rock Show", artist: "blink-182", url: "/audio/60 - blink-182 - The Rock Show (Official Video).mp3" },
+            { title: "Dammit", artist: "blink-182", url: "/audio/61 - blink-182 - Dammit (Official Video).mp3" },
+            { title: "Pop", artist: "*NSYNC", url: "/audio/62 - *NSYNC - Pop (Official HD Video).mp3" },
+            { title: "Drop It Like It's Hot ft. Pharrell Williams", artist: "Snoop Dogg", url: "/audio/63 - Snoop Dogg - Drop It Like It's Hot (Official Music Video) ft. Pharrell Williams.mp3" },
+            { title: "Candy Shop ft. Olivia", artist: "50 Cent", url: "/audio/64 - 50 Cent - Candy Shop (Official Music Video) ft. Olivia.mp3" },
+            { title: "Hot In Herre", artist: "Nelly", url: "/audio/65 - Nelly - Hot In Herre (Official Music Video).mp3" },
+            { title: "Grindin'", artist: "Clipse", url: "/audio/66 - Clipse - Grindin' (Official HD Video).mp3" }
+        ];
+        
+        // Shuffle tracks array on page load
+        for (let i = tracks.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [tracks[i], tracks[j]] = [tracks[j], tracks[i]];
+        }
+        
+        let currentTrack = 0;
+        const audio = document.getElementById('audioPlayer');
+        
+        // Render playlist
+        function renderPlaylist() {
+            const playlistEl = document.getElementById('playlist');
+            playlistEl.innerHTML = tracks.map((track, index) => `
+                <div class="playlist-item ${index === currentTrack ? 'active' : ''}" onclick="playTrack(${index})">
+                    <span class="track-number">${(index + 1).toString().padStart(2, '0')}.</span>
+                    ${track.title} - ${track.artist}
+                </div>
+            `).join('');
+        }
+        
+        function updateDisplay() {
+            document.getElementById('track-title').textContent = tracks[currentTrack].title;
+            document.getElementById('track-artist').textContent = tracks[currentTrack].artist;
+            renderPlaylist();
+        }
+        
+        function playTrack(index) {
+            currentTrack = index;
+            audio.src = tracks[currentTrack].url;
+            audio.play().then(() => {
+                isPlaying = true;
+                document.querySelector('.play-btn').textContent = '⏸';
+                document.querySelectorAll('.visualizer .bar').forEach(bar => {
+                    bar.style.animationPlayState = 'running';
+                });
+            }).catch(e => {
+                console.error('Audio play failed:', e);
+            });
+            updateDisplay();
+        }
+        
+        function togglePlay() {
+            const playBtn = document.querySelector('.play-btn');
+            
+            if (isPlaying) {
+                audio.pause();
+                playBtn.textContent = '▶';
+                isPlaying = false;
+                document.querySelectorAll('.visualizer .bar').forEach(bar => {
+                    bar.style.animationPlayState = 'paused';
+                });
+            } else {
+                if (!audio.src) {
+                    audio.src = tracks[currentTrack].url;
+                }
+                audio.play().then(() => {
+                    playBtn.textContent = '⏸';
+                    isPlaying = true;
+                    document.querySelectorAll('.visualizer .bar').forEach(bar => {
+                        bar.style.animationPlayState = 'running';
+                    });
+                }).catch(e => {
+                    console.error('Audio play failed:', e);
+                });
+            }
+        }
+        
+        function nextTrack() {
+            currentTrack = (currentTrack + 1) % tracks.length;
+            if (isPlaying) {
+                playTrack(currentTrack);
+            } else {
+                updateDisplay();
+            }
+        }
+        
+        function prevTrack() {
+            currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
+            if (isPlaying) {
+                playTrack(currentTrack);
+            } else {
+                updateDisplay();
+            }
+        }
+        
+        function toggleShuffle() {
+            currentTrack = Math.floor(Math.random() * tracks.length);
+            if (isPlaying) {
+                playTrack(currentTrack);
+            } else {
+                updateDisplay();
+            }
+        }
+        
+        // Auto-advance to next track when audio ends
+        audio.addEventListener('ended', () => {
+            nextTrack();
+        });
+        
+        // Initialize
+        updateDisplay();
+        renderPlaylist();
+    </script>
+</body>
+</html>
+

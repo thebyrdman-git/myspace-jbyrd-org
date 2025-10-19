@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jbyrd's Music Collection 🎵</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .music-player {
+            background: linear-gradient(to bottom, #0066cc, #003366);
+            border: 3px solid #ff6600;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        .track-list {
+            background: #fff;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        .track-item {
+            padding: 10px;
+            margin: 5px 0;
+            background: linear-gradient(to right, #e7e7e7, #f5f5f5);
+            border-left: 4px solid #0066cc;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .track-item:hover {
+            background: linear-gradient(to right, #cce0ff, #e6f2ff);
+            border-left-color: #ff6600;
+            transform: translateX(5px);
+        }
+        .track-item.playing {
+            background: linear-gradient(to right, #ffcc00, #ffd633);
+            border-left-color: #ff6600;
+            font-weight: bold;
+        }
+        audio {
+            width: 100%;
+            margin: 15px 0;
+        }
+        .now-playing {
+            color: #ff6600;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        .stats {
+            color: #fff;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎵 jbyrd's Music Collection 🎵</h1>
+            <p><a href="/">&larr; Back to Profile</a></p>
+        </div>
+
+        <div class="music-player">
+            <h2 style="color: #ff6600; text-align: center;">MySpace Music Player</h2>
+            <div class="stats">
+                📀 Total Tracks: <span id="track-count">67</span> | 💾 Total Size: 386 MB
+            </div>
+            
+            <div class="now-playing" id="now-playing">
+                ▶️ Click a track to start playing
+            </div>
+            
+            <audio id="audio-player" controls>
+                <source id="audio-source" src="" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+
+            <div class="track-list" id="track-list">
+                <!-- Track list will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 jbyrd.org | <a href="/" style="color: #fff;">← Back to jbyrd's profile</a></p>
+            <p class="disclaimer">Music collection extracted from YouTube Mix playlist.</p>
+        </div>
+    </div>
+
+    <script>
+        const tracks = [
+            "01 - Usher - Yeah! (Official Video) ft. Lil Jon, Ludacris.mp3",
+            "02 - Mark Ronson - Uptown Funk (Official Video) ft. Bruno Mars.mp3",
+            "03 - Michael Jackson - Billie Jean (Official Video).mp3",
+            "04 - T-Pain - Bartender (Official HD Video) ft. Akon.mp3",
+            "05 - Ciara - 1, 2 Step (Official Video) ft. Missy Elliott.mp3",
+            "06 - Avril Lavigne - Complicated (Official Video).mp3",
+            "07 - Mario - Let Me Love You (Official Video).mp3",
+            "08 - 50 Cent - In Da Club (Official Music Video).mp3",
+            "09 - Nelly - Dilemma (Official Music Video) ft. Kelly Rowland.mp3",
+            "10 - Chris Brown - Kiss Kiss (Feat. T-Pain) (Official HD Video) ft. T-Pain.mp3",
+            "11 - Shaggy - It Wasn't Me (Video).mp3",
+            "12 - Lil Wayne - Lollipop (Official Music Video) ft. Static.mp3",
+            "13 - The Black Eyed Peas - Where Is The Love？ (Official Music Video).mp3",
+            "14 - Eminem - Lose Yourself.mp3",
+            "15 - Evanescence - Bring Me To Life (Official HD Music Video).mp3",
+            "16 - Eminem - Love The Way You Lie ft. Rihanna.mp3",
+            "17 - LMFAO - Party Rock Anthem ft. Lauren Bennett, GoonRock.mp3",
+            "18 - Sean Kingston - Beautiful Girls (Official HD Video).mp3",
+            "19 - Nelly Furtado - Promiscuous (Official Music Video) ft. Timbaland.mp3",
+            "20 - Flo Rida - Low (Official Music Video) ft. T-Pain.mp3",
+            "21 - Rihanna - Umbrella (Orange Version) ft. JAY-Z.mp3",
+            "22 - Justin Bieber - Baby (Official Music Video) ft. Ludacris.mp3",
+            "23 - Nelly - Hot In Herre (Official Music Video).mp3",
+            "24 - OutKast - Hey Ya! (Official HD Video).mp3",
+            "25 - 50 Cent - Candy Shop (Official Music Video) ft. Olivia.mp3",
+            "26 - Gwen Stefani - Hollaback Girl.mp3",
+            "27 - Lady Gaga - Poker Face (Official Music Video).mp3",
+            "28 - Miley Cyrus - Party In The U.S.A. (Official Video).mp3",
+            "29 - Carly Rae Jepsen - Call Me Maybe.mp3",
+            "30 - Soulja Boy Tell'em - Crank That (Soulja Boy).mp3",
+            "31 - Chamillionaire - Ridin' ft. Krayzie Bone.mp3",
+            "32 - Flo Rida - Right Round (US Version) ft. Ke$ha.mp3",
+            "33 - Beyoncé - Halo (Official Music Video).mp3",
+            "34 - Leona Lewis - Bleeding Love (US Version).mp3",
+            "35 - P!nk - So What (Official Music Video).mp3",
+            "36 - T.I. - Whatever You Like (Official Video).mp3",
+            "37 - Keri Hilson - Knock You Down ft. Kanye West, Ne-Yo.mp3",
+            "38 - Akon - Right Now (Na Na Na) (Official Video).mp3",
+            "39 - Ne-Yo - So Sick (Official Music Video).mp3",
+            "40 - The Pussycat Dolls - Don't Cha (Official Music Video) ft. Busta Rhymes.mp3",
+            "41 - Danity Kane - Damaged (Official Music Video).mp3",
+            "42 - Britney Spears - Toxic (Official HD Video).mp3",
+            "43 - Christina Aguilera - Ain't No Other Man (Official HD Video).mp3",
+            "44 - Fergie - Glamorous (Official Music Video) ft. Ludacris.mp3",
+            "45 - The Black Eyed Peas - Boom Boom Pow (Official Music Video).mp3",
+            "46 - The Black Eyed Peas - I Gotta Feeling (Official Music Video).mp3",
+            "47 - Gym Class Heroes - Cupid's Chokehold _ Breakfast in America ft. Patrick Stump.mp3",
+            "48 - Taio Cruz - Dynamite (Official Video).mp3",
+            "49 - 3OH!3 - STARSTRUKK [Feat. Katy Perry] (Official Music Video).mp3",
+            "50 - The All-American Rejects - Gives You Hell.mp3",
+            "51 - Owl City - Fireflies (Official Music Video).mp3",
+            "52 - Pharrell - Frontin' (Official HD Video) ft. Jay-Z.mp3",
+            "53 - Outkast - The Way You Move (Official HD Video) ft. Sleepy Brown.mp3",
+            "54 - Aerosmith - I Don't Want to Miss a Thing (Official HD Video).mp3",
+            "55 - Baby Bash - Suga Suga (Official Music Video) ft. Frankie J.mp3",
+            "56 - 112 - Peaches And Cream (Official Music Video).mp3",
+            "57 - Bobby V. - Slow Down (Official Music Video).mp3",
+            "58 - Outkast - Roses (Official HD Video).mp3",
+            "59 - Green Day - Boulevard Of Broken Dreams [Official Music Video] [4K Upgrade].mp3",
+            "60 - Mario Winans - I Don't Wanna Know (Official Music Video) [HD Remaster].mp3",
+            "61 - Puddle Of Mudd - Blurry (Album Version) (Official Video).mp3",
+            "62 - Modjo - Lady (Hear Me Tonight) (Official Video).mp3",
+            "63 - Bone Crusher - Never Scared (Official HD Video) ft. Killer Mike, T.I..mp3",
+            "64 - DMX - Party Up (Up In Here) (Enhanced Video, Edited).mp3",
+            "65 - Green Day - American Idiot [Official Music Video] [4K Upgrade].mp3",
+            "66 - Clipse - Grindin' (Official HD Video).mp3"
+        ];
+
+        const audioPlayer = document.getElementById('audio-player');
+        const audioSource = document.getElementById('audio-source');
+        const nowPlaying = document.getElementById('now-playing');
+        const trackList = document.getElementById('track-list');
+        let currentTrack = null;
+
+        // Populate track list
+        tracks.forEach((track, index) => {
+            const trackDiv = document.createElement('div');
+            trackDiv.className = 'track-item';
+            trackDiv.innerHTML = `<strong>${index + 1}.</strong> ${track.replace('.mp3', '').replace(/^\d+ - /, '')}`;
+            trackDiv.onclick = () => playTrack(index);
+            trackList.appendChild(trackDiv);
+        });
+
+        function playTrack(index) {
+            // Remove playing class from all tracks
+            document.querySelectorAll('.track-item').forEach(item => {
+                item.classList.remove('playing');
+            });
+
+            // Add playing class to current track
+            document.querySelectorAll('.track-item')[index].classList.add('playing');
+
+            // Update audio source
+            currentTrack = index;
+            audioSource.src = '/music/' + encodeURIComponent(tracks[index]);
+            audioPlayer.load();
+            audioPlayer.play();
+
+            // Update now playing text
+            nowPlaying.textContent = '🎵 Now Playing: ' + tracks[index].replace('.mp3', '').replace(/^\d+ - /, '');
+        }
+
+        // Auto-play next track
+        audioPlayer.addEventListener('ended', () => {
+            if (currentTrack !== null && currentTrack < tracks.length - 1) {
+                playTrack(currentTrack + 1);
+            }
+        });
+
+        // Update track count
+        document.getElementById('track-count').textContent = tracks.length;
+    </script>
+</body>
+</html>
+

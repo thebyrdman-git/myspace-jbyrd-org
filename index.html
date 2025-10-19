@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jbyrd's MySpace</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        /* jbyrd's custom animated background */
+        body {
+            background: url('/images/bg-jbyrd.gif') repeat;
+            background-attachment: fixed;
+        }
+        .container {
+            background: #000 !important; /* Black */
+        }
+        .page-wrapper {
+            background: #000 !important; /* Black */
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="header">
+            <a href="https://jbyrd.org" target="_blank">
+                <img src="/images/myspace-logo.png" alt="MySpace" class="logo">
+            </a>
+        </div>
+        
+        <div class="container">
+            <!-- Left Column -->
+            <div class="left-column">
+                <div class="profile-box">
+                    <h2 class="section-header">jbyrd</h2>
+                    <div class="profile-pic">
+                        <img src="/images/profile.jpeg" alt="jbyrd">
+                    </div>
+                    <div class="profile-info">
+                        <p><strong>"Why should I change? He's the one who sucks."</strong></p>
+                        <p>💼 Systems Administrator</p>
+                        <p>Cubicle 4E, Initech</p>
+                    </div>
+                    <div class="mood">
+                        <strong>Mood:</strong> <span class="mood-text">Case of the Mondays 📎</span>
+                    </div>
+                </div>
+
+                <div class="interests-box">
+                    <h3 class="section-header orange">jbyrd's Interests</h3>
+                    <div class="interests">
+                        <p><strong>General:</strong></p>
+                        <p>Server Administration, Building PCs, Home Networks, Running Linux Boxes</p>
+                        <p><strong>Tech Stack:</strong></p>
+                        <p>Red Hat Linux, Apache, MySQL, Perl/CGI, VMware, Nagios</p>
+                        <p><strong>Philosophy:</strong></p>
+                        <p>Script everything, monitor everything, backup everything</p>
+                    </div>
+                </div>
+
+                <div class="favorites-box">
+                    <h3 class="section-header orange">My Favorite Sites</h3>
+                    <div class="favorites-list">
+                        <a href="/music-player.html">🎵 Music Collection (67 tracks)</a>
+                        <a href="https://money.jbyrd.org" target="_blank">💰 Microsoft Money</a>
+                        <a href="https://n8n.jbyrd.org" target="_blank">🔄 Cron Jobs</a>
+                        <a href="https://backup.jbyrd.org" target="_blank">💾 Norton Ghost</a>
+                        <a href="https://ha.jbyrd.org" target="_blank">🏠 X10 Home Automation</a>
+                        <a href="https://grafana.jbyrd.org" target="_blank">📊 Cacti/MRTG</a>
+                        <a href="https://plex.jbyrd.org" target="_blank">🎬 Windows Media Center</a>
+                        <a href="https://loki.jbyrd.org" target="_blank">📝 Syslog Viewer</a>
+                        <a href="https://alerts.jbyrd.org" target="_blank">🚨 Nagios</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="right-column">
+                <div class="main-content">
+                    <h2 class="section-header blue">🌟 Welcome to jbyrd's myspace page! 🌟</h2>
+                    
+                    <div class="about-me">
+                        <h3 class="orange-header">About Me:</h3>
+                        <p>Look, I'm not just some code monkey. I could write a virus that would completely take down this entire company's infrastructure. 
+                        I'm talking TOTAL devastation. But instead, I'm here writing Perl scripts and fixing your broken printers.</p>
+                        <p>I've got a home network with more servers than most small businesses. Red Hat Linux boxes, Apache web servers, 
+                        MySQL databases... the whole nine yards. It's like having my own little datacenter, except I don't have to wear a tie.</p>
+                        <p>If you could get your Exchange server to stop crashing, that'd be greeeat. Also, I'm gonna need you to come in on Saturday 
+                        to reboot the file server. Thanks.</p>
+                        <p><em>*adjusts pocket protector*</em> Now back to monitoring Nagios alerts... 🖥️</p>
+                    </div>
+
+                    <div class="music-player-box">
+                        <div class="retro-player">
+                            <div class="player-display">
+                                <div class="track-info">
+                                    <div class="track-title" id="track-title">Mr. Brightside - The Killers</div>
+                                    <div class="track-artist" id="track-artist">Hot Fuss (2004)</div>
+                                </div>
+                                <div class="visualizer">
+                                    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                                </div>
+                            </div>
+                            <div class="player-controls">
+                                <button class="ctrl-btn" onclick="prevTrack()">⏮</button>
+                                <button class="ctrl-btn play-btn" onclick="togglePlay()">▶</button>
+                                <button class="ctrl-btn" onclick="nextTrack()">⏭</button>
+                                <button class="ctrl-btn" onclick="toggleShuffle()">🔀</button>
+                            </div>
+                        </div>
+                        <div class="playlist-box">
+                            <div class="playlist-scroll" id="playlist"></div>
+                        </div>
+                        <audio id="audioPlayer" style="display: none;" preload="none"></audio>
+                    </div>
+
+                    <div class="friends-box">
+                        <h3 class="orange-header">👥 jbyrd's Friends</h3>
+                        <p class="subtitle">jbyrd has <strong>8</strong> friends</p>
+                        <div class="friends-grid">
+                            <div class="friend-item">
+                                <a href="/profiles/tom.html">
+                                    <img src="/images/profiles/thumb_tom_anderson.png" alt="Tom" width="100" height="100">
+                                </a>
+                                <span class="friend-name">Tom</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="/profiles/jesse.html">
+                                    <img src="/images/profiles/thumb_jesse.png" alt="Jesse" width="100" height="100">
+                                </a>
+                                <span class="friend-name">Jesse</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="/profiles/michelle.html">
+                                    <img src="/images/profiles/thumb_michelle.png" alt="Michelle" width="100" height="100">
+                                </a>
+                                <span class="friend-name">Michelle</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="/profiles/brandon.html">
+                                    <img src="/images/profiles/thumb_brandon.png" alt="Brandon" width="100" height="100">
+                                </a>
+                                <span class="friend-name">Brandon</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="/profiles/ashley.html">
+                                    <img src="/images/profiles/thumb_ashley.png" alt="Ashley" width="100" height="100">
+                                </a>
+                                <span class="friend-name">Ashley</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="/profiles/tyler.html">
+                                    <img src="/images/profiles/thumb_tyler.png" alt="Tyler" width="100" height="100">
+                                </a>
+                                <span class="friend-name">Tyler</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="/profiles/raven.html">
+                                    <img src="/images/profiles/thumb_raven.png" alt="Raven" width="100" height="100">
+                                </a>
+                                <span class="friend-name">Raven</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="/profiles/brittany.html">
+                                    <img src="/images/profiles/thumb_brittany.png" alt="Brittany" width="100" height="100">
+                                </a>
+                                <span class="friend-name">Brittany</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 jbyrd.org | Self-Hosted Infrastructure | Deployed with Ansible 🚀</p>
+            <p class="disclaimer">This is a parody page. MySpace is a trademark of MySpace Inc. No copyright infringement intended.</p>
+        </div>
+    </div>
+    
+    <script>
+        // Simple MP3 Player
+        let isPlaying = false;
+        
+        // Track list with local MP3 files
+        const tracks = [
+            { title: "Yeah!", artist: "Usher feat. Lil Jon & Ludacris", url: "/audio/01-usher-yeah-official-video-ft-lil-jon-ludacris.mp3" },
+            { title: "Uptown Funk", artist: "Mark Ronson feat. Bruno Mars", url: "/audio/02-mark-ronson-uptown-funk-official-video-ft-bruno-mars.mp3" },
+            { title: "Billie Jean", artist: "Michael Jackson", url: "/audio/03-michael-jackson-billie-jean-official-video.mp3" },
+            { title: "Bartender", artist: "T-Pain feat. Akon", url: "/audio/04-t-pain-bartender-official-hd-video-ft-akon.mp3" },
+            { title: "1, 2 Step", artist: "Ciara feat. Missy Elliott", url: "/audio/05-ciara-1-2-step-official-video-ft-missy-elliott.mp3" },
+            { title: "Complicated", artist: "Avril Lavigne", url: "/audio/06-avril-lavigne-complicated-official-video.mp3" },
+            { title: "Let Me Love You", artist: "Mario", url: "/audio/07-mario-let-me-love-you-official-video.mp3" },
+            { title: "In Da Club", artist: "50 Cent", url: "/audio/00-50-cent-in-da-club-official-music-video.mp3" },
+            { title: "Mr. Brightside", artist: "The Killers", url: "/audio/00-the-killers-mr-brightside-official-music-video.mp3" }
+        ];
+        let currentTrack = 0;
+        const audio = document.getElementById('audioPlayer');
+        
+        // Render playlist
+        function renderPlaylist() {
+            const playlistEl = document.getElementById('playlist');
+            playlistEl.innerHTML = tracks.map((track, index) => `
+                <div class="playlist-item ${index === currentTrack ? 'active' : ''}" onclick="playTrack(${index})">
+                    <span class="track-number">${(index + 1).toString().padStart(2, '0')}.</span>
+                    ${track.title} - ${track.artist}
+                </div>
+            `).join('');
+        }
+        
+        function updateDisplay() {
+            document.getElementById('track-title').textContent = tracks[currentTrack].title;
+            document.getElementById('track-artist').textContent = tracks[currentTrack].artist;
+            renderPlaylist();
+        }
+        
+        function playTrack(index) {
+            currentTrack = index;
+            audio.src = tracks[currentTrack].url;
+            audio.play().then(() => {
+                isPlaying = true;
+                document.querySelector('.play-btn').textContent = '⏸';
+                document.querySelectorAll('.visualizer .bar').forEach(bar => {
+                    bar.style.animationPlayState = 'running';
+                });
+            }).catch(e => {
+                console.error('Audio play failed:', e);
+            });
+            updateDisplay();
+        }
+        
+        function togglePlay() {
+            const playBtn = document.querySelector('.play-btn');
+            
+            if (isPlaying) {
+                audio.pause();
+                playBtn.textContent = '▶';
+                isPlaying = false;
+                document.querySelectorAll('.visualizer .bar').forEach(bar => {
+                    bar.style.animationPlayState = 'paused';
+                });
+            } else {
+                if (!audio.src) {
+                    audio.src = tracks[currentTrack].url;
+                }
+                audio.play().then(() => {
+                    playBtn.textContent = '⏸';
+                    isPlaying = true;
+                    document.querySelectorAll('.visualizer .bar').forEach(bar => {
+                        bar.style.animationPlayState = 'running';
+                    });
+                }).catch(e => {
+                    console.error('Audio play failed:', e);
+                });
+            }
+        }
+        
+        function nextTrack() {
+            currentTrack = (currentTrack + 1) % tracks.length;
+            if (isPlaying) {
+                playTrack(currentTrack);
+            } else {
+                updateDisplay();
+            }
+        }
+        
+        function prevTrack() {
+            currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
+            if (isPlaying) {
+                playTrack(currentTrack);
+            } else {
+                updateDisplay();
+            }
+        }
+        
+        function toggleShuffle() {
+            currentTrack = Math.floor(Math.random() * tracks.length);
+            if (isPlaying) {
+                playTrack(currentTrack);
+            } else {
+                updateDisplay();
+            }
+        }
+        
+        // Auto-advance to next track when audio ends
+        audio.addEventListener('ended', () => {
+            nextTrack();
+        });
+        
+        // Initialize
+        updateDisplay();
+        renderPlaylist();
+    </script>
+</body>
+</html>
+        const SPOTIFY_CONFIG = {
+            clientId: '0d3668e069af4fe8a1d17b8d77785a5c',
+            redirectUri: 'https://jbyrd.org/spotify-callback.html',
+            scopes: [
+                'streaming',
+                'user-read-email',
+                'user-read-private',
+                'user-read-playback-state',
+                'user-modify-playback-state'
+            ]
+        };
+
+        class SpotifyPlayer {
+            constructor() {
+                this.player = null;
+                this.deviceId = null;
+                this.accessToken = localStorage.getItem('spotify_access_token');
+                this.currentTrackIndex = 0;
+                
+                this.playlistUris = [
+                    'spotify:track:003vvx7Niy0yvhvHt4a68B',  // Mr. Brightside - The Killers
+                    'spotify:track:0J9IPTfaGFz0GTxeQNJuqR',  // In Too Deep - Sum 41
+                    'spotify:track:3YBZIN3rekqsKxbJc9FZko',  // The Middle - Jimmy Eat World
+                    'spotify:track:3UazzelPQVpLp5E0wXfA5i',  // Sk8er Boi - Avril Lavigne
+                    'spotify:track:0WqIKmW4BTrj3eJFmnCKMv'   // All Star - Smash Mouth
+                ];
+                
+                this.trackInfo = [
+                    { title: "Mr. Brightside - The Killers", artist: "Hot Fuss (2004)" },
+                    { title: "In Too Deep - Sum 41", artist: "All Killer No Filler (2001)" },
+                    { title: "The Middle - Jimmy Eat World", artist: "Bleed American (2001)" },
+                    { title: "Sk8er Boi - Avril Lavigne", artist: "Let Go (2002)" },
+                    { title: "All Star - Smash Mouth", artist: "Astro Lounge (1999)" }
+                ];
+            }
+
+            // Generate PKCE code verifier and challenge
+            async generatePKCE() {
+                const codeVerifier = this.generateRandomString(128);
+                localStorage.setItem('pkce_code_verifier', codeVerifier);
+                
+                const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(codeVerifier));
+                const codeChallenge = btoa(String.fromCharCode(...new Uint8Array(digest)))
+                    .replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
+                
+                return { codeVerifier, codeChallenge };
+            }
+
+            generateRandomString(length) {
+                const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                const values = crypto.getRandomValues(new Uint8Array(length));
+                return values.reduce((acc, x) => acc + possible[x % possible.length], '');
+            }
+
+            async authenticate() {
+                const { codeChallenge } = await this.generatePKCE();
+                
+                const authUrl = `https://accounts.spotify.com/authorize?` +
+                    `client_id=${SPOTIFY_CONFIG.clientId}` +
+                    `&response_type=code` +
+                    `&redirect_uri=${encodeURIComponent(SPOTIFY_CONFIG.redirectUri)}` +
+                    `&scope=${encodeURIComponent(SPOTIFY_CONFIG.scopes.join(' '))}` +
+                    `&code_challenge_method=S256` +
+                    `&code_challenge=${codeChallenge}`;
+                
+                const width = 450, height = 730;
+                const left = window.screen.width / 2 - width / 2;
+                const top = window.screen.height / 2 - height / 2;
+                
+                window.open(authUrl, 'Spotify Login', `width=${width},height=${height},left=${left},top=${top}`);
+            }
+
+            async init() {
+                if (!this.accessToken) return false;
+
+                return new Promise((resolve) => {
+                    if (!window.Spotify) {
+                        const script = document.createElement('script');
+                        script.src = 'https://sdk.scdn.co/spotify-player.js';
+                        document.head.appendChild(script);
+                    }
+
+                    window.onSpotifyWebPlaybackSDKReady = () => {
+                        this.player = new window.Spotify.Player({
+                            name: "jbyrd's MySpace Player",
+                            getOAuthToken: cb => { cb(this.accessToken); },
+                            volume: 0.7
+                        });
+
+                        this.player.addListener('ready', ({ device_id }) => {
+                            this.deviceId = device_id;
+                            resolve(true);
+                        });
+
+                        this.player.addListener('player_state_changed', (state) => {
+                            if (state) this.updateUIFromState(state);
+                        });
+
+                        this.player.connect();
+                    };
+                });
+            }
+
+            updateUIFromState(state) {
+                const playBtn = document.querySelector('.play-btn');
+                if (playBtn) playBtn.textContent = state.paused ? '▶' : '⏸';
+                
+                document.querySelectorAll('.visualizer .bar').forEach(bar => {
+                    bar.style.animationPlayState = state.paused ? 'paused' : 'running';
+                });
+            }
+
+            async playTrack(index) {
+                if (!this.deviceId) return;
+                this.currentTrackIndex = index;
+                
+                document.getElementById('track-title').textContent = this.trackInfo[index].title;
+                document.getElementById('track-artist').textContent = this.trackInfo[index].artist;
+                
+                await fetch(`https://api.spotify.com/v1/me/player/play?device_id=${this.deviceId}`, {
+                    method: 'PUT',
+                    body: JSON.stringify({ uris: [this.playlistUris[index]] }),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${this.accessToken}`
+                    }
+                });
+            }
+
+            async togglePlay() {
+                if (this.player) this.player.togglePlay();
+            }
+
+            async nextTrack() {
+                this.currentTrackIndex = (this.currentTrackIndex + 1) % this.playlistUris.length;
+                await this.playTrack(this.currentTrackIndex);
+            }
+
+            async prevTrack() {
+                this.currentTrackIndex = (this.currentTrackIndex - 1 + this.playlistUris.length) % this.playlistUris.length;
+                await this.playTrack(this.currentTrackIndex);
+            }
+
+            async shuffle() {
+                this.currentTrackIndex = Math.floor(Math.random() * this.playlistUris.length);
+                await this.playTrack(this.currentTrackIndex);
+            }
+        }
+
+        const spotifyPlayer = new SpotifyPlayer();
+    </script>
+</body>
+</html>
+
+
