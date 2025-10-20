@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brock - MySpace</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Brock's Party Jock theme - LOUD and INTENSE */
+        body {
+            background: #000;
+        }
+        .container {
+            background: #8B0000 !important;
+        }
+        .profile-box, .interests-box, .friends-box, .main-content {
+            background: #1a0000 !important;
+            color: #FFD700 !important;
+            border: 3px solid #FF0000;
+        }
+        .profile-box p, .interests-box p, .friends-box p, .main-content p,
+        .profile-box strong, .interests-box strong, .friends-box strong, .main-content strong {
+            color: #FFD700 !important;
+            font-weight: bold;
+        }
+        .friend-name {
+            color: #FFD700 !important;
+        }
+        .section-header {
+            background: linear-gradient(to bottom, #FF0000 0%, #8B0000 100%) !important;
+            color: #FFD700 !important;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="header">
+            <a href="https://jbyrd.org" target="_blank">
+                <img src="images/myspace-logo.png" alt="MySpace" class="logo">
+            </a>
+        </div>
+        
+        <div class="container">
+            <div class="left-column">
+                <div class="profile-box">
+                    <h2 class="section-header">BROCK</h2>
+                    <div class="profile-pic">
+                        <img src="images/profiles/brock.png" alt="Brock" style="width: 200px; height: 200px; object-fit: cover;">
+                    </div>
+                    <div class="profile-info">
+                        <p><strong>"CHUG! CHUG! CHUG!!!"</strong></p>
+                        <p>🍺 Party Animal</p>
+                        <p>The Keg</p>
+                    </div>
+                    <div class="mood">
+                        <strong>Mood:</strong> <span class="mood-text">PUMPED UP!!! 💪</span>
+                    </div>
+                </div>
+
+                <div class="interests-box">
+                    <h3 class="section-header orange">BROCK'S INTERESTS</h3>
+                    <div class="interests">
+                        <p><strong>General:</strong></p>
+                        <p>PARTYING, football, keg stands, beer pong, tailgating, lifting weights, YELLING, wrestling, poker nights, demolition derbies</p>
+                        <p><strong>Music:</strong></p>
+                        <p>Limp Bizkit, DMX, Kid Rock, Disturbed, Godsmack, Korn, Slipknot, LINKIN PARK, PANTERA!!!</p>
+                        <p><strong>Movies:</strong></p>
+                        <p>Animal House, Old School, Van Wilder, American Pie, Wedding Crashers, Gladiator, 300</p>
+                        <p><strong>Books:</strong></p>
+                        <p>LOL BOOKS?? Sports Illustrated Swimsuit Edition counts right???</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="main-content">
+                    <h2 class="section-header blue">🍺 BROCK'S PARTY ZONE!!! 🍺</h2>
+                    
+                    <div class="about-me">
+                        <h3 class="orange-header">About Me:</h3>
+                        <p>YOOOOO WHAT'S UP!!! I'M BROCK AND I'M HERE TO PARTY HARD AND LIVE LOUD!!!</p>
+                        <p>Starting linebacker for State! We're going to REGIONALS this year baby!!! WHOOOOO!!! 🏈💪</p>
+                        <p>If you can't find me at practice, I'm either at the gym gettin' SWOLE or hosting the BIGGEST parties in town! My place, Friday night, BE THERE OR BE SQUARE!!! Last weekend we went through THREE kegs! My personal record for keg stands is 47 seconds - TRY AND BEAT THAT BRO!!!</p>
+                        <p>Beer pong champion 3 years running. Undefeated. Step up if you think you got game! 🍻</p>
+                        <p><em>"GO BIG OR GO HOME!!!" - Brock's life motto</em></p>
+                    </div>
+
+                    <div class="music-player-box">
+                        <div class="retro-player">
+                            <div class="player-display">
+                                <div class="track-info">
+                                    <div class="track-title" id="track-title"></div>
+                                    <div class="track-artist" id="track-artist"></div>
+                                </div>
+                                <div class="visualizer">
+                                    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                                </div>
+                            </div>
+                            <div class="player-controls">
+                                <button class="ctrl-btn" onclick="prevTrack()">⏮</button>
+                                <button class="ctrl-btn play-btn" onclick="togglePlay()">▶</button>
+                                <button class="ctrl-btn" onclick="nextTrack()">⏭</button>
+                                <button class="ctrl-btn" onclick="toggleShuffle()">🔀</button>
+                            </div>
+                        </div>
+                        <div class="playlist-box">
+                            <div class="playlist-scroll" id="playlist"></div>
+                        </div>
+                        <audio id="audioPlayer" style="display: none;" preload="none"></audio>
+                    </div>
+
+                    <div class="friends-box">
+                        <h3 class="orange-header">BROCK'S CREW</h3>
+                        <p class="subtitle">Brock has <strong>9</strong> friends</p>
+                        <div class="friends-grid">
+                            <div class="friend-item">
+                                <a href="/">
+                                    <img src="images/profile.jpeg" alt="jbyrd" width="150" height="150" style="object-fit: cover;">
+                                </a>
+                                <span class="friend-name">jbyrd</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="profiles/tom.html">
+                                    <img src="images/profiles/thumb_tom_anderson.png" alt="Tom" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Tom</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="profiles/jesse.html">
+                                    <img src="images/profiles/thumb_jesse.png" alt="Jesse" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Jesse</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="profiles/michelle.html">
+                                    <img src="images/profiles/thumb_michelle.png" alt="Michelle" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Michelle</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="profiles/brandon.html">
+                                    <img src="images/profiles/thumb_brandon.png" alt="Brandon" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Brandon</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="profiles/ashley.html">
+                                    <img src="images/profiles/thumb_ashley.png" alt="Ashley" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Ashley</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="profiles/tyler.html">
+                                    <img src="images/profiles/thumb_tyler.png" alt="Tyler" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Tyler</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="profiles/raven.html">
+                                    <img src="images/profiles/thumb_raven.png" alt="Raven" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Raven</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="profiles/steven.html">
+                                    <img src="images/profiles/thumb_steven.png" alt="Steven" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Steven</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 jbyrd.org | <a href="/" style="color: #FFD700;">← Back to jbyrd's profile</a></p>
+            <p class="disclaimer">This is a parody page. MySpace is a trademark of MySpace Inc. No copyright infringement intended.</p>
+        </div>
+    </div>
+
+    <script>
+        // Simple MP3 Player
+        let isPlaying = false;
+        
+        // Track list with local MP3 files
+        // Brock's Party Rock/Nu-Metal Playlist
+        const tracks = [
+            { title: "Break Stuff", artist: "Limp Bizkit", url: "audio/117 - Limp Bizkit - Break Stuff (Official Music Video).mp3" },
+            { title: "Pumping Iron Power", artist: "Grailknights feat. Sabaton", url: "audio/118 - Grailknights - Pumping Iron Power (feat. Joakim Brodén from Sabaton).mp3" },
+            { title: "Duality", artist: "Slipknot", url: "audio/119 - Slipknot - Duality [OFFICIAL VIDEO] [HD].mp3" },
+            { title: "Party Rock Anthem", artist: "LMFAO", url: "audio/17 - LMFAO - Party Rock Anthem ft. Lauren Bennett, GoonRock.mp3" },
+            { title: "Party Up", artist: "DMX", url: "audio/64 - DMX - Party Up (Up In Here) (Enhanced Video, Edited).mp3" }
+        ];
+        
+        // Shuffle tracks array on page load
+        for (let i = tracks.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [tracks[i], tracks[j]] = [tracks[j], tracks[i]];
+        }
+        
+        let currentTrack = 0;
+        const audio = document.getElementById('audioPlayer');
+        
+        // Render playlist
+        function renderPlaylist() {
+            const playlistEl = document.getElementById('playlist');
+            playlistEl.innerHTML = tracks.map((track, index) => `
+                <div class="playlist-item ${index === currentTrack ? 'active' : ''}" onclick="playTrack(${index})">
+                    <span class="track-number">${(index + 1).toString().padStart(2, '0')}.</span>
+                    ${track.title} - ${track.artist}
+                </div>
+            `).join('');
+        }
+        
+        function updateDisplay() {
+            document.getElementById('track-title').textContent = tracks[currentTrack].title;
+            document.getElementById('track-artist').textContent = tracks[currentTrack].artist;
+            renderPlaylist();
+        }
+        
+        function playTrack(index) {
+            currentTrack = index;
+            audio.src = tracks[currentTrack].url;
+            audio.play().then(() => {
+                isPlaying = true;
+                document.querySelector('.play-btn').textContent = '⏸';
+                document.querySelectorAll('.visualizer .bar').forEach(bar => {
+                    bar.style.animationPlayState = 'running';
+                });
+            }).catch(e => {
+                console.error('Audio play failed:', e);
+            });
+            updateDisplay();
+        }
+        
+        function togglePlay() {
+            const playBtn = document.querySelector('.play-btn');
+            
+            if (isPlaying) {
+                audio.pause();
+                playBtn.textContent = '▶';
+                isPlaying = false;
+                document.querySelectorAll('.visualizer .bar').forEach(bar => {
+                    bar.style.animationPlayState = 'paused';
+                });
+            } else {
+                if (!audio.src) {
+                    audio.src = tracks[currentTrack].url;
+                }
+                audio.play().then(() => {
+                    playBtn.textContent = '⏸';
+                    isPlaying = true;
+                    document.querySelectorAll('.visualizer .bar').forEach(bar => {
+                        bar.style.animationPlayState = 'running';
+                    });
+                }).catch(e => {
+                    console.error('Audio play failed:', e);
+                });
+            }
+        }
+        
+        function nextTrack() {
+            currentTrack = (currentTrack + 1) % tracks.length;
+            if (isPlaying) {
+                playTrack(currentTrack);
+            } else {
+                updateDisplay();
+            }
+        }
+        
+        function prevTrack() {
+            currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
+            if (isPlaying) {
+                playTrack(currentTrack);
+            } else {
+                updateDisplay();
+            }
+        }
+        
+        function toggleShuffle() {
+            currentTrack = Math.floor(Math.random() * tracks.length);
+            if (isPlaying) {
+                playTrack(currentTrack);
+            } else {
+                updateDisplay();
+            }
+        }
+        
+        // Auto-advance to next track when audio ends
+        audio.addEventListener('ended', () => {
+            nextTrack();
+        });
+        
+        // Initialize
+        updateDisplay();
+        renderPlaylist();
+    </script>
+</body>
+</html>
+
