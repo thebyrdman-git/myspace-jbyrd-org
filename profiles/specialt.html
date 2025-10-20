@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special T - MySpace</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Special T's psychedelic chill vibe */
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #667eea 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            background: rgba(26, 26, 46, 0.9) !important;
+        }
+        .profile-box, .interests-box, .friends-box, .main-content {
+            background: rgba(15, 52, 96, 0.95) !important;
+            color: #fff !important;
+            border: 2px solid #f093fb;
+            box-shadow: 0 0 20px rgba(240, 147, 251, 0.3);
+        }
+        .profile-box p, .interests-box p, .friends-box p, .main-content p,
+        .profile-box strong, .interests-box strong, .friends-box strong, .main-content strong {
+            color: #fff !important;
+        }
+        .friend-name {
+            color: #f093fb !important;
+        }
+        .section-header {
+            background: linear-gradient(to bottom, #667eea 0%, #764ba2 100%) !important;
+            color: #fff !important;
+        }
+        .section-header.orange {
+            background: linear-gradient(to bottom, #f093fb 0%, #764ba2 100%) !important;
+        }
+        .page-wrapper {
+            transform: scale(0.9);
+            transform-origin: top center;
+            margin-bottom: -100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="header">
+            <a href="https://jbyrd.org" target="_blank">
+                <img src="images/myspace-logo.png" alt="MySpace" class="logo">
+            </a>
+        </div>
+        
+        <div class="container">
+            <div class="left-column">
+                <div class="profile-box">
+                    <h2 class="section-header">Special T</h2>
+                    <div class="profile-pic">
+                        <img src="images/profiles/specialt.png" alt="Special T" style="width: 200px; height: 200px; object-fit: cover;">
+                    </div>
+                    <div class="profile-info">
+                        <p><strong>"What's up, earthlings? 👽"</strong></p>
+                        <p>🎸 Psychedelic Explorer</p>
+                        <p>The Couch</p>
+                    </div>
+                    <div class="mood">
+                        <strong>Mood:</strong> <span class="mood-text">😌 Chill</span>
+                    </div>
+                </div>
+
+                <div class="interests-box">
+                    <h3 class="section-header orange">Special T's Interests</h3>
+                    <div class="interests">
+                        <p><strong>General:</strong></p>
+                        <p>Cloud-gazing, staring at lava lamps, listening to vinyl, attempting to write poetry, napping, exploring the sonic landscape</p>
+                        <p><strong>Music:</strong></p>
+                        <p>Psychedelic rock, shoegaze, space rock, lo-fi beats, anything with a heavy wah pedal. Pink Floyd, Tame Impala, King Gizzard and the Lizard Wizard, The Flaming Lips, Pond</p>
+                        <p><strong>Movies:</strong></p>
+                        <p>Anything with a good, confusing plot. Also, animated stuff with weird colors</p>
+                        <p><strong>Food:</strong></p>
+                        <p>Anything you can eat straight out of the bag. Delivery is also a highly respected art form</p>
+                        <p><strong>Philosophy:</strong></p>
+                        <p>The world would be a better place if everyone just took a deep breath, put on some headphones, and watched the colors change</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="main-content">
+                    <h2 class="section-header blue">👽 Special T's Cosmic Corner 👽</h2>
+                    
+                    <div class="about-me">
+                        <h3 class="orange-header">About Me:</h3>
+                        <p>If you're reading this, you're either cool or you got lost on the internet. Either way, welcome to my little corner of the digital cosmos.</p>
+                        
+                        <p>I spend most of my time exploring the far reaches of my couch, contemplating the true meaning of pizza, and making sure my record player is getting enough love. I'm all about that slow-motion life. Why rush when you can vibe?</p>
+                        
+                        <p>I think the world would be a better place if everyone just took a deep breath, put on some headphones, and watched the colors change. You dig?</p>
+                        
+                        <p><em>P.S. If anyone sees my favorite lighter, tell it to come home.</em></p>
+                        
+                        <h3 class="orange-header">Who I'd Like to Meet:</h3>
+                        <p>• People who have strong opinions on the best flavor of Doritos</p>
+                        <p>• Anyone who can explain how a black hole works using only interpretive dance</p>
+                        <p>• Someone with a spare guitar and a willingness to jam for approximately four to six hours</p>
+                        <p>• Fellow explorers of the sonic landscape. Psych rock nerds, unite!</p>
+                        <p>• My future self, so I can ask him where I left my keys</p>
+                        
+                        <h3 class="orange-header">Currently Listening To:</h3>
+                        <p>🎵 Tame Impala - Currents</p>
+                        
+                        <h3 class="orange-header">Last Login:</h3>
+                        <p>...Whenever I finished that last bag of chips.</p>
+                    </div>
+
+                    <div class="friends-box">
+                        <h3 class="orange-header">Special T's Top 8 Friends</h3>
+                        <p class="subtitle">Special T has <strong>8</strong> friends</p>
+                        <div class="friends-grid">
+                            <div class="friend-item">
+                                <a href="/">
+                                    <img src="images/profile.jpeg" alt="jbyrd" width="150" height="150" style="object-fit: cover;">
+                                </a>
+                                <span class="friend-name">jbyrd</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="profiles/tom.html">
+                                    <img src="images/profiles/thumb_tom_anderson.png" alt="Tom" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Tom</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="profiles/jesse.html">
+                                    <img src="images/profiles/thumb_jesse.png" alt="Jesse" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Jesse</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="profiles/tyler.html">
+                                    <img src="images/profiles/thumb_tyler.png" alt="Tyler" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Tyler</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="profiles/raven.html">
+                                    <img src="images/profiles/thumb_raven.png" alt="Raven" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Raven</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="profiles/steven.html">
+                                    <img src="images/profiles/thumb_steven.png" alt="Steven" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Steven</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="profiles/billy.html">
+                                    <img src="images/profiles/thumb_billy.png" alt="Billy" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Billy</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="profiles/specialt.html">
+                                    <img src="images/profiles/thumb_specialt.png" alt="Special T" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Myself</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 jbyrd.org | <a href="/" style="color: #fff;">← Back to jbyrd's profile</a></p>
+            <p class="disclaimer">This is a parody page. MySpace is a trademark of MySpace Inc. No copyright infringement intended.</p>
+        </div>
+    </div>
+</body>
+</html>
+
