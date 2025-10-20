@@ -120,6 +120,30 @@
                         <p>...Whenever I finished that last bag of chips.</p>
                     </div>
 
+                    <div class="music-player-box">
+                        <div class="retro-player">
+                            <div class="player-display">
+                                <div class="track-info">
+                                    <div class="track-title" id="track-title"></div>
+                                    <div class="track-artist" id="track-artist"></div>
+                                </div>
+                                <div class="visualizer">
+                                    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                                </div>
+                            </div>
+                            <div class="player-controls">
+                                <button class="ctrl-btn" onclick="prevTrack()">⏮</button>
+                                <button class="ctrl-btn play-btn" onclick="togglePlay()">▶</button>
+                                <button class="ctrl-btn" onclick="nextTrack()">⏭</button>
+                                <button class="ctrl-btn" onclick="toggleShuffle()">🔀</button>
+                            </div>
+                        </div>
+                        <div class="playlist-box">
+                            <div class="playlist-scroll" id="playlist"></div>
+                        </div>
+                        <audio id="audioPlayer" style="display: none;" preload="none"></audio>
+                    </div>
+
                     <div class="friends-box">
                         <h3 class="orange-header">Special T's Friends</h3>
                         <p class="subtitle">Special T has <strong>12</strong> friends</p>
@@ -207,6 +231,127 @@
             <p class="disclaimer">This is a parody page. MySpace is a trademark of MySpace Inc. No copyright infringement intended.</p>
         </div>
     </div>
+
+    <script>
+        // Simple MP3 Player
+        let isPlaying = false;
+        
+        // Special T's Chill Vibes Playlist
+        const tracks = [
+            { title: "Smooth", artist: "Santana feat. Rob Thomas", url: "audio/41 - Santana - Smooth (Official Video) ft. Rob Thomas.mp3" },
+            { title: "Suga Suga", artist: "Baby Bash feat. Frankie J", url: "audio/55 - Baby Bash - Suga Suga (Official Music Video) ft. Frankie J.mp3" },
+            { title: "Peaches And Cream", artist: "112", url: "audio/56 - 112 - Peaches And Cream (Official Music Video).mp3" },
+            { title: "Slow Down", artist: "Bobby V.", url: "audio/57 - Bobby V. - Slow Down (Official Music Video).mp3" },
+            { title: "I Need a Girl Part 2", artist: "P. Diddy", url: "audio/39 - P. Diddy - I Need a Girl Part 2 (Official Music Video).mp3" },
+            { title: "Beautiful Girls", artist: "Sean Kingston", url: "audio/18 - Sean Kingston - Beautiful Girls (Official HD Video).mp3" },
+            { title: "Friday I'm In Love", artist: "The Cure", url: "audio/104 - The Cure - Friday I'm In Love.mp3" },
+            { title: "Just Like Heaven", artist: "The Cure", url: "audio/105 - The Cure - Just Like Heaven.mp3" },
+            { title: "Lovesong", artist: "The Cure", url: "audio/106 - The Cure - Lovesong.mp3" }
+        ];
+        
+        // Shuffle tracks array on page load for a random vibe
+        for (let i = tracks.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [tracks[i], tracks[j]] = [tracks[j], tracks[i]];
+        }
+        
+        let currentTrack = 0;
+        const audio = document.getElementById('audioPlayer');
+        
+        // Render playlist
+        function renderPlaylist() {
+            const playlistEl = document.getElementById('playlist');
+            playlistEl.innerHTML = tracks.map((track, index) => `
+                <div class="playlist-item ${index === currentTrack ? 'active' : ''}" onclick="playTrack(${index})">
+                    <span class="track-number">${(index + 1).toString().padStart(2, '0')}.</span>
+                    ${track.title} - ${track.artist}
+                </div>
+            `).join('');
+        }
+        
+        function updateDisplay() {
+            document.getElementById('track-title').textContent = tracks[currentTrack].title;
+            document.getElementById('track-artist').textContent = tracks[currentTrack].artist;
+            renderPlaylist();
+        }
+        
+        function playTrack(index) {
+            currentTrack = index;
+            audio.src = tracks[currentTrack].url;
+            audio.play().then(() => {
+                isPlaying = true;
+                document.querySelector('.play-btn').textContent = '⏸';
+                document.querySelectorAll('.visualizer .bar').forEach(bar => {
+                    bar.style.animationPlayState = 'running';
+                });
+            }).catch(e => {
+                console.error('Audio play failed:', e);
+            });
+            updateDisplay();
+        }
+        
+        function togglePlay() {
+            const playBtn = document.querySelector('.play-btn');
+            
+            if (isPlaying) {
+                audio.pause();
+                playBtn.textContent = '▶';
+                isPlaying = false;
+                document.querySelectorAll('.visualizer .bar').forEach(bar => {
+                    bar.style.animationPlayState = 'paused';
+                });
+            } else {
+                if (!audio.src) {
+                    audio.src = tracks[currentTrack].url;
+                }
+                audio.play().then(() => {
+                    playBtn.textContent = '⏸';
+                    isPlaying = true;
+                    document.querySelectorAll('.visualizer .bar').forEach(bar => {
+                        bar.style.animationPlayState = 'running';
+                    });
+                }).catch(e => {
+                    console.error('Audio play failed:', e);
+                });
+            }
+        }
+        
+        function nextTrack() {
+            currentTrack = (currentTrack + 1) % tracks.length;
+            if (isPlaying) {
+                playTrack(currentTrack);
+            } else {
+                updateDisplay();
+            }
+        }
+        
+        function prevTrack() {
+            currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
+            if (isPlaying) {
+                playTrack(currentTrack);
+            } else {
+                updateDisplay();
+            }
+        }
+        
+        function toggleShuffle() {
+            currentTrack = Math.floor(Math.random() * tracks.length);
+            if (isPlaying) {
+                playTrack(currentTrack);
+            } else {
+                updateDisplay();
+            }
+        }
+        
+        // Auto-advance to next track when audio ends
+        audio.addEventListener('ended', () => {
+            nextTrack();
+        });
+        
+        // Initialize
+        updateDisplay();
+        renderPlaylist();
+    </script>
 </body>
 </html>
 
