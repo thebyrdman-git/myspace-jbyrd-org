@@ -142,6 +142,21 @@
                                 <button class="ctrl-btn play-btn" onclick="togglePlay()">▶</button>
                                 <button class="ctrl-btn" onclick="nextTrack()">⏭</button>
                                 <button class="ctrl-btn" onclick="toggleShuffle()">🔀</button>
+                            <div class="progress-container">
+                                <div class="progress-bar" onclick="seekTo(event)">
+                                    <div class="progress-fill" id="progress-fill"></div>
+                                </div>
+                                <div class="time-display">
+                                    <span id="current-time">0:00</span>
+                                    <span id="duration">0:00</span>
+                                </div>
+                            </div>
+                            <div class="volume-container">
+                                <span class="volume-label">🔊</span>
+                                <div class="volume-slider" onclick="setVolume(event)">
+                                    <div class="volume-fill" id="volume-fill"></div>
+                                </div>
+                            </div>
                             </div>
                         </div>
                         <div class="playlist-box">
@@ -348,12 +363,54 @@
             }
         }
         
+        // Format time from seconds to MM:SS
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Update progress bar
+        function updateProgress() {
+            if (audio.duration) {
+                const progressPercent = (audio.currentTime / audio.duration) * 100;
+                document.getElementById('progress-fill').style.width = progressPercent + '%';
+                document.getElementById('current-time').textContent = formatTime(audio.currentTime);
+                document.getElementById('duration').textContent = formatTime(audio.duration);
+            }
+        }
+        
+        // Seek to position in track
+        function seekTo(event) {
+            if (audio.duration) {
+                const progressBar = event.currentTarget;
+                const rect = progressBar.getBoundingClientRect();
+                const percent = (event.clientX - rect.left) / rect.width;
+                audio.currentTime = percent * audio.duration;
+            }
+        }
+        
+        // Set volume
+        function setVolume(event) {
+            const volumeSlider = event.currentTarget;
+            const rect = volumeSlider.getBoundingClientRect();
+            const percent = (event.clientX - rect.left) / rect.width;
+            audio.volume = Math.max(0, Math.min(1, percent));
+            document.getElementById('volume-fill').style.width = (percent * 100) + '%';
+        }
+        
+        // Event listeners
+        audio.addEventListener('timeupdate', updateProgress);
+        audio.addEventListener('loadedmetadata', updateProgress);
+        
         // Auto-advance to next track when audio ends
         audio.addEventListener('ended', () => {
             nextTrack();
         });
         
         // Initialize
+        audio.volume = 0.7; // Set default volume to 70%
         updateDisplay();
         renderPlaylist();
     </script>
