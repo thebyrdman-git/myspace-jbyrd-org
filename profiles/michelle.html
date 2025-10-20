@@ -121,6 +121,30 @@
                         <p><em>"the worst part of holding the memories is not the pain. it's the loneliness of it. memories need to be shared." - lois lowry</em></p>
                     </div>
 
+                    <div class="music-player-box">
+                        <div class="retro-player">
+                            <div class="player-display">
+                                <div class="track-info">
+                                    <div class="track-title" id="track-title"></div>
+                                    <div class="track-artist" id="track-artist"></div>
+                                </div>
+                                <div class="visualizer">
+                                    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                                </div>
+                            </div>
+                            <div class="player-controls">
+                                <button class="ctrl-btn" onclick="prevTrack()">⏮</button>
+                                <button class="ctrl-btn play-btn" onclick="togglePlay()">▶</button>
+                                <button class="ctrl-btn" onclick="nextTrack()">⏭</button>
+                                <button class="ctrl-btn" onclick="toggleShuffle()">🔀</button>
+                            </div>
+                        </div>
+                        <div class="playlist-box">
+                            <div class="playlist-scroll" id="playlist"></div>
+                        </div>
+                        <audio id="audioPlayer" style="display: none;" preload="none"></audio>
+                    </div>
+
                     <div class="friends-box">
                         <h3 class="orange-header">Michelle's Friends</h3>
                         <p class="subtitle">Michelle has <strong>8</strong> friends</p>
@@ -184,6 +208,126 @@
             <p class="disclaimer">This is a parody page. MySpace is a trademark of MySpace Inc. No copyright infringement intended.</p>
         </div>
     </div>
+
+    <script>
+        // Simple MP3 Player
+        let isPlaying = false;
+        
+        // Track list with local MP3 files
+        // Michelle's Emo/Goth Playlist
+        const tracks = [
+            { title: "Helena", artist: "My Chemical Romance", url: "audio/91 - My Chemical Romance - Helena [Official Music Video - 4K Film Restored].mp3" },
+            { title: "I'm Not Okay (I Promise)", artist: "My Chemical Romance", url: "audio/92 - My Chemical Romance - I'm Not Okay (I Promise) [Official Music Video - 4K Film Restored].mp3" },
+            { title: "Welcome To The Black Parade", artist: "My Chemical Romance", url: "audio/93 - My Chemical Romance - Welcome To The Black Parade [Official Music Video] [HD].mp3" },
+            { title: "Cute Without the 'E'", artist: "Taking Back Sunday", url: "audio/94 - Taking Back Sunday - Cute Without the ＂E＂ (Cut From the Team).mp3" },
+            { title: "MakeDamnSure", artist: "Taking Back Sunday", url: "audio/95 - Taking Back Sunday - MakeDamnSure (Official Music Video) HD.mp3" },
+            { title: "Hands Down", artist: "Dashboard Confessional", url: "audio/87 - Dashboard Confessional - Hands Down (Official Music Video).mp3" },
+            { title: "Screaming Infidelities", artist: "Dashboard Confessional", url: "audio/88 - Dashboard Confessional - Screaming Infidelities (Official HD Music Video).mp3" }
+        ];
+        
+        // Shuffle tracks array on page load
+        for (let i = tracks.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [tracks[i], tracks[j]] = [tracks[j], tracks[i]];
+        }
+        
+        let currentTrack = 0;
+        const audio = document.getElementById('audioPlayer');
+        
+        // Render playlist
+        function renderPlaylist() {
+            const playlistEl = document.getElementById('playlist');
+            playlistEl.innerHTML = tracks.map((track, index) => `
+                <div class="playlist-item ${index === currentTrack ? 'active' : ''}" onclick="playTrack(${index})">
+                    <span class="track-number">${(index + 1).toString().padStart(2, '0')}.</span>
+                    ${track.title} - ${track.artist}
+                </div>
+            `).join('');
+        }
+        
+        function updateDisplay() {
+            document.getElementById('track-title').textContent = tracks[currentTrack].title;
+            document.getElementById('track-artist').textContent = tracks[currentTrack].artist;
+            renderPlaylist();
+        }
+        
+        function playTrack(index) {
+            currentTrack = index;
+            audio.src = tracks[currentTrack].url;
+            audio.play().then(() => {
+                isPlaying = true;
+                document.querySelector('.play-btn').textContent = '⏸';
+                document.querySelectorAll('.visualizer .bar').forEach(bar => {
+                    bar.style.animationPlayState = 'running';
+                });
+            }).catch(e => {
+                console.error('Audio play failed:', e);
+            });
+            updateDisplay();
+        }
+        
+        function togglePlay() {
+            const playBtn = document.querySelector('.play-btn');
+            
+            if (isPlaying) {
+                audio.pause();
+                playBtn.textContent = '▶';
+                isPlaying = false;
+                document.querySelectorAll('.visualizer .bar').forEach(bar => {
+                    bar.style.animationPlayState = 'paused';
+                });
+            } else {
+                if (!audio.src) {
+                    audio.src = tracks[currentTrack].url;
+                }
+                audio.play().then(() => {
+                    playBtn.textContent = '⏸';
+                    isPlaying = true;
+                    document.querySelectorAll('.visualizer .bar').forEach(bar => {
+                        bar.style.animationPlayState = 'running';
+                    });
+                }).catch(e => {
+                    console.error('Audio play failed:', e);
+                });
+            }
+        }
+        
+        function nextTrack() {
+            currentTrack = (currentTrack + 1) % tracks.length;
+            if (isPlaying) {
+                playTrack(currentTrack);
+            } else {
+                updateDisplay();
+            }
+        }
+        
+        function prevTrack() {
+            currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
+            if (isPlaying) {
+                playTrack(currentTrack);
+            } else {
+                updateDisplay();
+            }
+        }
+        
+        function toggleShuffle() {
+            currentTrack = Math.floor(Math.random() * tracks.length);
+            if (isPlaying) {
+                playTrack(currentTrack);
+            } else {
+                updateDisplay();
+            }
+        }
+        
+        // Auto-advance to next track when audio ends
+        audio.addEventListener('ended', () => {
+            nextTrack();
+        });
+        
+        // Initialize
+        updateDisplay();
+        renderPlaylist();
+    </script>
 </body>
 </html>
 
