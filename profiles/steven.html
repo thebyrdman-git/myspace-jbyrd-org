@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steven - MySpace</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Steven's Band Nerd theme */
+        body {
+            background: #1a1a2e;
+        }
+        .container {
+            background: #16213e !important;
+        }
+        .profile-box, .interests-box, .friends-box, .main-content {
+            background: #0f3460 !important;
+            color: #fff !important;
+            border: 2px solid #e94560;
+        }
+        .profile-box p, .interests-box p, .friends-box p, .main-content p,
+        .profile-box strong, .interests-box strong, .friends-box strong, .main-content strong {
+            color: #fff !important;
+        }
+        .friend-name {
+            color: #fff !important;
+        }
+        .section-header {
+            background: linear-gradient(to bottom, #e94560 0%, #533483 100%) !important;
+            color: #fff !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="header">
+            <a href="https://jbyrd.org" target="_blank">
+                <img src="images/myspace-logo.png" alt="MySpace" class="logo">
+            </a>
+        </div>
+        
+        <div class="container">
+            <div class="left-column">
+                <div class="profile-box">
+                    <h2 class="section-header">Steven</h2>
+                    <div class="profile-pic">
+                        <img src="images/profiles/steven.png" alt="Steven" style="width: 200px; height: 200px; object-fit: cover;">
+                    </div>
+                    <div class="profile-info">
+                        <p><strong>"I can hit a low B-flat, can you?"</strong></p>
+                        <p>🎺 Band Nerd</p>
+                        <p>The Band Room</p>
+                    </div>
+                    <div class="mood">
+                        <strong>Mood:</strong> <span class="mood-text">Practicing 🎵</span>
+                    </div>
+                </div>
+
+                <div class="interests-box">
+                    <h3 class="section-header orange">Steven's Interests</h3>
+                    <div class="interests">
+                        <p><strong>General:</strong></p>
+                        <p>Playing tuba, marching band, music theory, solving Rubik's cubes, Dungeons & Dragons, collecting comic books</p>
+                        <p><strong>Music:</strong></p>
+                        <p>Classical composers, John Philip Sousa marches, John Williams film scores, epic orchestral music</p>
+                        <p><strong>Movies:</strong></p>
+                        <p>Star Wars (all of them), Lord of the Rings trilogy, Marvel movies</p>
+                        <p><strong>Books:</strong></p>
+                        <p>D&D Player's Handbook, comic books, fantasy novels</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="main-content">
+                    <h2 class="section-header blue">🎺 Steven's Band Corner 🎺</h2>
+                    
+                    <div class="about-me">
+                        <h3 class="orange-header">About Me:</h3>
+                        <p>I'm that guy who plays the tuba. Yeah, I know it's huge, and yes, I can actually carry it.</p>
+                        <p>We made State Finals this year! Spent countless hours perfecting our routine. Marching band is life! 🎵</p>
+                        <p>When I'm not at band practice, I'm either working on my Rubik's Cube speed or DMing a D&D campaign. Current best time: 47 seconds!</p>
+                        <p><em>"The tuba is the most important instrument in the band. Change my mind." - Steven</em></p>
+                    </div>
+
+                    <div class="music-player-box">
+                        <div class="retro-player">
+                            <div class="player-display">
+                                <div class="track-info">
+                                    <div class="track-title" id="track-title"></div>
+                                    <div class="track-artist" id="track-artist"></div>
+                                </div>
+                                <div class="visualizer">
+                                    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                                </div>
+                            </div>
+                            <div class="player-controls">
+                                <button class="ctrl-btn" onclick="prevTrack()">⏮</button>
+                                <button class="ctrl-btn play-btn" onclick="togglePlay()">▶</button>
+                                <button class="ctrl-btn" onclick="nextTrack()">⏭</button>
+                                <button class="ctrl-btn" onclick="toggleShuffle()">🔀</button>
+                            </div>
+                        </div>
+                        <div class="playlist-box">
+                            <div class="playlist-scroll" id="playlist"></div>
+                        </div>
+                        <audio id="audioPlayer" style="display: none;" preload="none"></audio>
+                    </div>
+
+                    <div class="friends-box">
+                        <h3 class="orange-header">Steven's Friends</h3>
+                        <p class="subtitle">Steven has <strong>8</strong> friends</p>
+                        <div class="friends-grid">
+                            <div class="friend-item">
+                                <a href="/">
+                                    <img src="images/profile.jpeg" alt="jbyrd" width="150" height="150" style="object-fit: cover;">
+                                </a>
+                                <span class="friend-name">jbyrd</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="profiles/tom.html">
+                                    <img src="images/profiles/thumb_tom_anderson.png" alt="Tom" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Tom</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="profiles/jesse.html">
+                                    <img src="images/profiles/thumb_jesse.png" alt="Jesse" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Jesse</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="profiles/michelle.html">
+                                    <img src="images/profiles/thumb_michelle.png" alt="Michelle" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Michelle</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="profiles/brandon.html">
+                                    <img src="images/profiles/thumb_brandon.png" alt="Brandon" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Brandon</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="profiles/ashley.html">
+                                    <img src="images/profiles/thumb_ashley.png" alt="Ashley" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Ashley</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="profiles/tyler.html">
+                                    <img src="images/profiles/thumb_tyler.png" alt="Tyler" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Tyler</span>
+                            </div>
+                            <div class="friend-item">
+                                <a href="profiles/raven.html">
+                                    <img src="images/profiles/thumb_raven.png" alt="Raven" width="150" height="150">
+                                </a>
+                                <span class="friend-name">Raven</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 jbyrd.org | <a href="/" style="color: #fff;">← Back to jbyrd's profile</a></p>
+            <p class="disclaimer">This is a parody page. MySpace is a trademark of MySpace Inc. No copyright infringement intended.</p>
+        </div>
+    </div>
+
+    <script>
+        // Simple MP3 Player
+        let isPlaying = false;
+        
+        // Track list with local MP3 files
+        // Steven's Epic Orchestral Playlist
+        const tracks = [
+            { title: "Star Wars Main Theme", artist: "John Williams", url: "audio/00001 - Star Wars Main Theme (Full).mp3" },
+            { title: "The Force Theme", artist: "John Williams", url: "audio/00002 - Star Wars Music Pick Episode IV： The Force Theme.mp3" },
+            { title: "Star Wars Theme Song", artist: "John Williams", url: "audio/00003 - Star Wars Theme Song By John Williams.mp3" },
+            { title: "To Glory", artist: "Two Steps From Hell", url: "audio/115 - Two Steps From Hell - To Glory.mp3" },
+            { title: "Impossible", artist: "Two Steps From Hell", url: "audio/116 - Two Steps From Hell - Impossible (feat. Merethe Soltvedt).mp3" }
+        ];
+        
+        // Shuffle tracks array on page load
+        for (let i = tracks.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [tracks[i], tracks[j]] = [tracks[j], tracks[i]];
+        }
+        
+        let currentTrack = 0;
+        const audio = document.getElementById('audioPlayer');
+        
+        // Render playlist
+        function renderPlaylist() {
+            const playlistEl = document.getElementById('playlist');
+            playlistEl.innerHTML = tracks.map((track, index) => `
+                <div class="playlist-item ${index === currentTrack ? 'active' : ''}" onclick="playTrack(${index})">
+                    <span class="track-number">${(index + 1).toString().padStart(2, '0')}.</span>
+                    ${track.title} - ${track.artist}
+                </div>
+            `).join('');
+        }
+        
+        function updateDisplay() {
+            document.getElementById('track-title').textContent = tracks[currentTrack].title;
+            document.getElementById('track-artist').textContent = tracks[currentTrack].artist;
+            renderPlaylist();
+        }
+        
+        function playTrack(index) {
+            currentTrack = index;
+            audio.src = tracks[currentTrack].url;
+            audio.play().then(() => {
+                isPlaying = true;
+                document.querySelector('.play-btn').textContent = '⏸';
+                document.querySelectorAll('.visualizer .bar').forEach(bar => {
+                    bar.style.animationPlayState = 'running';
+                });
+            }).catch(e => {
+                console.error('Audio play failed:', e);
+            });
+            updateDisplay();
+        }
+        
+        function togglePlay() {
+            const playBtn = document.querySelector('.play-btn');
+            
+            if (isPlaying) {
+                audio.pause();
+                playBtn.textContent = '▶';
+                isPlaying = false;
+                document.querySelectorAll('.visualizer .bar').forEach(bar => {
+                    bar.style.animationPlayState = 'paused';
+                });
+            } else {
+                if (!audio.src) {
+                    audio.src = tracks[currentTrack].url;
+                }
+                audio.play().then(() => {
+                    playBtn.textContent = '⏸';
+                    isPlaying = true;
+                    document.querySelectorAll('.visualizer .bar').forEach(bar => {
+                        bar.style.animationPlayState = 'running';
+                    });
+                }).catch(e => {
+                    console.error('Audio play failed:', e);
+                });
+            }
+        }
+        
+        function nextTrack() {
+            currentTrack = (currentTrack + 1) % tracks.length;
+            if (isPlaying) {
+                playTrack(currentTrack);
+            } else {
+                updateDisplay();
+            }
+        }
+        
+        function prevTrack() {
+            currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
+            if (isPlaying) {
+                playTrack(currentTrack);
+            } else {
+                updateDisplay();
+            }
+        }
+        
+        function toggleShuffle() {
+            currentTrack = Math.floor(Math.random() * tracks.length);
+            if (isPlaying) {
+                playTrack(currentTrack);
+            } else {
+                updateDisplay();
+            }
+        }
+        
+        // Auto-advance to next track when audio ends
+        audio.addEventListener('ended', () => {
+            nextTrack();
+        });
+        
+        // Initialize
+        updateDisplay();
+        renderPlaylist();
+    </script>
+</body>
+</html>
+
