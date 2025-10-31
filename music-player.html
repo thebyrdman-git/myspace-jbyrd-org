@@ -28,6 +28,9 @@
             border-left: 4px solid #0066cc;
             cursor: pointer;
             transition: all 0.2s;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
         }
         .track-item:hover {
             background: linear-gradient(to right, #cce0ff, #e6f2ff);
@@ -39,11 +42,15 @@
             border-left-color: #ff6600;
             font-weight: bold;
         }
+        /* Hide download button from audio controls */
+        audio::-webkit-media-controls-download-button {
+            display: none !important;
+        }
+        audio::-internal-media-controls-download-button {
+            display: none !important;
+        }
+        
         audio {
-            /* Hide download button */
-            audio::-webkit-media-controls-download-button { display: none; }
-            audio::-internal-media-controls-download-button { display: none; }
-            .track-item { user-select: none; -webkit-user-select: none; -moz-user-select: none; }
             width: 100%;
             margin: 15px 0;
         }
